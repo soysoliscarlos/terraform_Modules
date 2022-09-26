@@ -23,7 +23,6 @@ module "network" {
 
 
 ## Variables
-# Module networking 
 ```
 variable "rg_config" {
   type = object({
