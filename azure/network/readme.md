@@ -2,13 +2,14 @@
 ## load the module
 
 ### Create a network with Resource Group
+```
 module "network" {
   source = "./Modules/Networking"
   rg_config = var.rg_config
   vnet_config = var.vnet_config
   subnets_config = var.subnets_config
 }
-
+```
 ### Create a network without Resource Group
 module "network" {
   source = "./Modules/Networking"
