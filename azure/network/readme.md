@@ -4,7 +4,7 @@
 ### Create a network with Resource Group
 ```
 module "network" {
-  source = "./Modules/Networking"
+  source = "github.com/soysoliscarlos/terraform_modules/azure/network"
   rg_config = var.rg_config
   vnet_config = var.vnet_config
   subnets_config = var.subnets_config
@@ -13,7 +13,7 @@ module "network" {
 ### Create a network without Resource Group
 ```
 module "network" {
-  source = "./Modules/Networking"
+  source = "github.com/soysoliscarlos/terraform_modules/azure/network"
   vnet_config = var.vnet_config
   subnets_config = var.subnets_config
   resource_group_name = var.resource_group_name
