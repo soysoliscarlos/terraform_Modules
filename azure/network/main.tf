@@ -27,7 +27,7 @@ resource "azurerm_virtual_network" "main" {
   ]
 }
 
-resource "azurerm_subnet" "subnet" {
+resource "azurerm_subnet" "main" {
   for_each = { for each in var.subnets_config : each.name => each }
   name                                           = "${each.value.name}"
   address_prefixes                               = "${each.value.address_prefixes}"

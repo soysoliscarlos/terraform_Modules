@@ -74,3 +74,10 @@ variable "rglocation" {
   default = "eastus2"
 }
 ```
+
+## outputs
+
+* rg-name (String)
+* rg-location (String)
+* VNet-name (String)
+* subnets (List by name) 
