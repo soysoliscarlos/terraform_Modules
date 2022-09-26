@@ -1,3 +1,3 @@
 output "rg-name" {
-  value = resource_group.rg.name
+  value = azurerm_resource_group.rg.name
 }
