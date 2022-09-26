@@ -32,8 +32,8 @@ resource "azurerm_subnet" "subnet" {
   name                                           = "${each.value.name}"
   address_prefixes                               = "${each.value.address_prefixes}"
   #enforce_private_link_endpoint_network_policies = true
-  resource_group_name                            = azurerm_virtual_network.vnet[0].resource_group_name
-  virtual_network_name                           = azurerm_virtual_network.vnet[0].name
+  resource_group_name                            = azurerm_virtual_network.main[0].resource_group_name
+  virtual_network_name                           = azurerm_virtual_network.main[0].name
 
   depends_on = [
     azurerm_virtual_network.main,
