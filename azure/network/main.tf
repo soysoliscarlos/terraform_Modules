@@ -1,5 +1,5 @@
 # Module networking 
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "main" {
   count    = var.rg_config.create_rg ? 1 : 0
   name     = var.rg_config.name
   location = var.rg_config.location
@@ -16,14 +16,14 @@ locals {
   )
 }
 
-resource "azurerm_virtual_network" "vnet" {
+resource "azurerm_virtual_network" "main" {
   count    = var.vnet_config.create_vnet ? 1 : 0
   name                = "VNet_${var.vnet_config.name}"
   address_space       = "${var.vnet_config.address_space}"
   location            = "${local.rglocation}"
   resource_group_name = "${local.rgname}"
   depends_on = [
-    azurerm_resource_group.rg,
+    azurerm_resource_group.main,
   ]
 }
 
@@ -36,6 +36,6 @@ resource "azurerm_subnet" "subnet" {
   virtual_network_name                           = azurerm_virtual_network.vnet[0].name
 
   depends_on = [
-    azurerm_virtual_network.vnet,
+    azurerm_virtual_network.main,
   ]
 }
