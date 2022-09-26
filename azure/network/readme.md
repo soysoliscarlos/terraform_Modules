@@ -11,6 +11,7 @@ module "network" {
 }
 ```
 ### Create a network without Resource Group
+```
 module "network" {
   source = "./Modules/Networking"
   vnet_config = var.vnet_config
@@ -18,10 +19,12 @@ module "network" {
   resource_group_name = var.resource_group_name
   resource_group_location = var.resource_group_location
 }
+```
 
 
 ## Variables
 # Module networking 
+```
 variable "rg_config" {
   type = object({
     create_rg = bool
@@ -71,3 +74,4 @@ variable "rglocation" {
   description = "Define location in case does not create a resource group"
   default = "eastus2"
 }
+```
