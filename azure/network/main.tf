@@ -7,11 +7,11 @@ resource "azurerm_resource_group" "main" {
 
 locals {
   rglocation = try(
-    "${azurerm_resource_group.rg[0].location}",
+    "${azurerm_resource_group.main[0].location}",
     "${var.resource_group_location}"
   )
   rgname = try(
-    "${azurerm_resource_group.rg[0].name}",
+    "${azurerm_resource_group.main[0].name}",
     "${var.resource_group_name}"
   )
 }
