@@ -68,7 +68,7 @@ resource "azurerm_managed_disk" "main" {
     resource_group_name   = azurerm_network_interface.main["${each.value.name}"].resource_group_name
     zone                 = "${each.value.zone}"
     create_option        = "${each.value.create_option}"
-    storage_account_type = "Standard_LRS"
+    storage_account_type = "${each.value.storage_account_type}"
     disk_size_gb         = "${each.value.disk_size_gb}"
 }
 
