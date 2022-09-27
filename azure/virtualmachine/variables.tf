@@ -20,8 +20,16 @@ variable "vms_config" {
     os_sku = string
     os_version = string
     private_ip_address_allocation = string
-    subnet_id = string
-  }))
+    enable_accelerated_networking = bool
+    managed_disks = list(object({
+      lun = number
+      create_option = string
+      storage_account_type = string
+      disk_size_gb         = number
+      caching              = string
+      }
+    ))
+  })) 
   default = [{
     name = "vm01"
     vmsize = "Standard_D2s_v5"
@@ -32,7 +40,26 @@ variable "vms_config" {
     os_publisher = "MicrosoftWindowsServer"
     os_sku = "2019-datacenter-smalldisk-g2"
     os_version = "latest"
-    private_ip_address_allocation = "dynamic" # "dynamic" - "static"
-    subnet_id = "default"
+    private_ip_address_allocation = "Dynamic" # "Dynamic" - "Static"
+    enable_accelerated_networking = true
+    managed_disks = [{
+      lun = "0"
+      create_option = "Empty"
+      storage_account_type ="Standard_LRS"
+      disk_size_gb         = 32
+      caching              = "ReadOnly"
+    }]
   }]
+}
+variable "vm_resource_group_name" {
+  type = string
+  default = "RG_01"
+}
+variable "vm_location" {
+  type = string
+  default = "eastus2"
+}
+variable "subnet_id" { 
+  type = string
+  default = ""
 }
